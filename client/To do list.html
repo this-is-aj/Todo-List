@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> To do list</title>
+    <link rel="stylesheet" href="To do list.css">
+</head>
+
+<body>
+    <header>
+        <h1>To Do list</h1>
+    </header>
+    <div id="container">
+        <div id="create">
+            <h2>Create lists</h2>
+            <form action="TO do list.py">
+                <input type="text" placeholder="Title" id="title">
+                <br>
+                <textarea name="description" id="list_description" cols="30" rows="10" placeholder="Description"></textarea>
+                <br>
+                <input type="date" name="task_date" id="task_date">
+                <input type="submit" value="Create list" id="submit" class="btn">
+            </form>
+        </div>
+        <div id="view">
+            <h2>To Do</h2>
+            <ul>
+                <form action="">
+                <li><input type="checkbox" name="task state" class="task_state"><span>first item</span>
+                    <input type="button" value="edit" class="edit-page">
+                </li>
+                <li><input type="checkbox" name="task_state" class="task_state"><span>second item</span>
+                    <input type="button" value="edit" class="edit-page">
+                </li>
+                <li><input type="checkbox" name="task_state" class="task_state"><span>third item</span>
+                    <input type="button" value="edit" class="edit-page">
+                </li>
+                <li><input type="checkbox" name="task_state" class="task_state"><span>fourth item</span>
+                    <input type="button" value="edit" class="edit-page">
+                </li>
+                </form>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
