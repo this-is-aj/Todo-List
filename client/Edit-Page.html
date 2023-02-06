@@ -1,4 +1,4 @@
-
+{% load static %}
 <!DOCTYPE html>
 
 <html lang="en">
@@ -8,27 +8,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> To do list</title>
-    <link rel="stylesheet" href="To do list.css">
+    <link rel="stylesheet" href=" {% static '.\To do list.css' %} ">
 </head>
+
 <body>
     <div id="wrapper">
         <header>
             <h1 id="edit">Edit list items</h1>
         </header>
-            <div id="edit">
-                <form action="TO do list.py">
-                    <input type="text" placeholder="Title" id="title" class="no-shadow" >
-                    <br>
-                    <textarea name="description" id="desc" class="no-shadow" cols="30" rows="10" placeholder="Description..."></textarea>
-                    <br>
-                   <div>
+        <div id="edit">
+            <form method="POST" action="/edit/{{todo_item.id}}/">
+                {% csrf_token %}
+                <label for="text" class="label">Task</label>
+                <input type="text" placeholder={{todo_item.task}} id="title" class="no-shadow" name="task">
+                <br>
+                <label for="text" class="label">Description</label>
+                <textarea id="desc" class="no-shadow" cols="30" rows="10" name="desc"
+                placeholder="{{todo_item.desc}}"></textarea>
+                <br>
+                <label for="date" class="label">Date</label>
+                <input type="date" id="task_date" name="date">
+                <br>
+                <div>
                     <button type="submit" class="btn">Submit</button>
-                  </div>
-                </form>
-            </div>
+                </div>
+            </form>
+        </div>
     </div>
 </body>
-
-
-   
-

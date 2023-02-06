@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> To do list</title>
-    <link rel="stylesheet" href="To do list.css">
+    <link rel="stylesheet" href=" {% static '.\To do list.css' %} ">
 </head>
 
 <body>
@@ -16,32 +17,40 @@
     <div id="container">
         <div id="create">
             <h2>Create lists</h2>
-            <form action="TO do list.py">
-                <input type="text" placeholder="Title" id="title">
+            <form action="/" method="POST"> {% csrf_token %}
+                <input type="text" placeholder="Title" id="title" name="task">
                 <br>
-                <textarea name="description" id="list_description" cols="30" rows="10" placeholder="Description"></textarea>
+                <textarea id="list_description" cols="30" rows="10" placeholder="Description" name="desc"></textarea>
                 <br>
-                <input type="date" name="task_date" id="task_date">
+                <input type="date" id="task_date" name="date">
                 <input type="submit" value="Create list" id="submit" class="btn">
             </form>
         </div>
         <div id="view">
             <h2>To Do</h2>
             <ul>
-                <form action="">
-                <li><input type="checkbox" name="task state" class="task_state"><span>first item</span>
-                    <input type="button" value="edit" class="edit-page">
+                {% for todo_item in todo_items %}
+                <div type="text/javascript" onmouseover=fun()>
+                <script type="text/javascript">
+                    function fun(){
+                        var desc = "{{todo_item.desc}}";
+                        var date = "{{todo_item.date}}";
+                    }
+                 </script>
+                <li><input type="checkbox" name="task state" class="task_state"><span>
+                        {{todo_item.task}} ||
+                        <script>desc </script>
+                    </span>
+                    <a href="/edit/{{todo_item.id}}/">
+                        <button type="button" value="edit" class="edit-page">edit</button>
+                    </a>
+                    <a href="/delete/{{todo_item.id}}/">
+                        <button type="button" value="edit" class="edit-page">finished</button>
+                    </a>
                 </li>
-                <li><input type="checkbox" name="task_state" class="task_state"><span>second item</span>
-                    <input type="button" value="edit" class="edit-page">
-                </li>
-                <li><input type="checkbox" name="task_state" class="task_state"><span>third item</span>
-                    <input type="button" value="edit" class="edit-page">
-                </li>
-                <li><input type="checkbox" name="task_state" class="task_state"><span>fourth item</span>
-                    <input type="button" value="edit" class="edit-page">
-                </li>
-                </form>
+                {% endfor %}
+            </div>
+                
             </ul>
         </div>
     </div>
